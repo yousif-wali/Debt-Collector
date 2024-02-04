@@ -20,6 +20,8 @@ namespace DebtCalculator.Models
             using (IDbConnection cnn = new SQLiteConnection(LoadManager()))
             {
                 cnn.Execute("INSERT INTO Customer (Name, Phone, Address, Balance) VALUES (@Name, @Phone, @Address, @Balance)", person);
+                cnn.Execute("INSERT INTO Transactions (Name, Date, Balance) VALUES (@Name, @Date, @Balance)", new { Name = person.Name, Balance = person.Balance, Date = DateTime.Now.ToString() });
+            
             }
         }
 
@@ -32,11 +34,28 @@ namespace DebtCalculator.Models
                 return output.ToArray();
             }
         }
-        public static void DeleteData(Person person)
+        public static History[] GetHistories()
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadManager()))
             {
-                cnn.Execute("DELETE FROM Customer Where Name = @Name and Phone = @Phone and Address = @Address and Balance = @Balance limit 1;", person);
+                var output = cnn.Query<History>("Select * FROM Transactions order by Id desc", new DynamicParameters());
+                return output.ToArray();
+            }
+        }
+        public static History[] GetHistories(string name)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadManager()))
+            {
+                var output = cnn.Query<History>("Select * FROM Transactions WHERE Name = @Name order by Id desc", new { Name = name});
+                return output.ToArray();
+            }
+        }
+            public static void DeleteData(int id, string name)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadManager()))
+            {
+                cnn.Execute("DELETE FROM Customer Where Id = @Id limit 1;", new { Id = id});
+                cnn.Execute("DELETE FROM Transactions WHERE Name = @Name", new { Name = name});
             }
         }
         public static IEnumerable<Person> Search(string search)
@@ -46,6 +65,17 @@ namespace DebtCalculator.Models
                 var output = cnn.Query<Person>("SELECT * FROM Customer WHERE Name = @Search OR Phone = @Search OR Address = @Search OR Balance = @Search",
                                 new { Search = search });
                 return output;
+            }
+        }
+        public static void Update(int id, string name, string phone, string address, int balance)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadManager()))
+            {
+                
+                cnn.Execute("UPDATE Customer SET Name = @Name, Phone = @Phone, Address = @Address, Balance = @Balance WHERE Id = @Id",
+                    new { Id = id, Name = name, Phone = phone, Address = address, Balance = balance});
+                cnn.Execute("INSERT INTO Transactions (Name, Date, Balance) VALUES (@Name, @Date, @Balance)", new { Name = name, Balance = balance, Date = DateTime.Now.ToString() });
+
             }
         }
         private static string LoadManager(string Id = "Default")

@@ -42,7 +42,12 @@
             InputSearch = new TextBox();
             Search = new Button();
             Refresh = new Button();
+            Update = new Button();
+            label4 = new Label();
+            HistoryData = new DataGridView();
+            label5 = new Label();
             ((System.ComponentModel.ISupportInitialize)Data).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)HistoryData).BeginInit();
             SuspendLayout();
             // 
             // Data
@@ -51,10 +56,10 @@
             Data.AllowUserToDeleteRows = false;
             Data.AllowUserToOrderColumns = true;
             Data.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            Data.Location = new Point(12, 12);
+            Data.Location = new Point(12, 57);
             Data.Name = "Data";
             Data.ReadOnly = true;
-            Data.Size = new Size(570, 266);
+            Data.Size = new Size(559, 221);
             Data.TabIndex = 0;
             Data.CellClick += Data_CellClick;
             // 
@@ -145,14 +150,14 @@
             // 
             // InputSearch
             // 
-            InputSearch.Location = new Point(12, 311);
+            InputSearch.Location = new Point(28, 20);
             InputSearch.Name = "InputSearch";
             InputSearch.Size = new Size(189, 23);
             InputSearch.TabIndex = 11;
             // 
             // Search
             // 
-            Search.Location = new Point(220, 303);
+            Search.Location = new Point(236, 12);
             Search.Name = "Search";
             Search.Size = new Size(88, 37);
             Search.TabIndex = 12;
@@ -166,15 +171,60 @@
             Refresh.Name = "Refresh";
             Refresh.Size = new Size(88, 37);
             Refresh.TabIndex = 13;
-            Refresh.Text = "نوێ کردنەوە";
+            Refresh.Text = "زانیاری نوێ";
             Refresh.UseVisualStyleBackColor = true;
             Refresh.Click += Refresh_Click;
+            // 
+            // Update
+            // 
+            Update.Location = new Point(785, 241);
+            Update.Name = "Update";
+            Update.Size = new Size(88, 37);
+            Update.TabIndex = 14;
+            Update.Text = "نوێ کردنەوە";
+            Update.UseVisualStyleBackColor = true;
+            Update.Click += Update_Click;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Location = new Point(477, 29);
+            label4.Name = "label4";
+            label4.Size = new Size(94, 25);
+            label4.TabIndex = 15;
+            label4.Text = "زانیاریەکان";
+            // 
+            // HistoryData
+            // 
+            HistoryData.AllowUserToAddRows = false;
+            HistoryData.AllowUserToDeleteRows = false;
+            HistoryData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            HistoryData.Location = new Point(12, 316);
+            HistoryData.Name = "HistoryData";
+            HistoryData.ReadOnly = true;
+            HistoryData.Size = new Size(559, 149);
+            HistoryData.TabIndex = 16;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Location = new Point(514, 288);
+            label5.Name = "label5";
+            label5.Size = new Size(57, 25);
+            label5.TabIndex = 17;
+            label5.Text = "مێژوو";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(878, 477);
+            Controls.Add(label5);
+            Controls.Add(HistoryData);
+            Controls.Add(label4);
+            Controls.Add(Update);
             Controls.Add(Refresh);
             Controls.Add(Search);
             Controls.Add(InputSearch);
@@ -191,9 +241,10 @@
             Controls.Add(Data);
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
+            Text = "Debt Calculator";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)Data).EndInit();
+            ((System.ComponentModel.ISupportInitialize)HistoryData).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -214,5 +265,9 @@
         private TextBox InputSearch;
         private Button Search;
         private Button Refresh;
+        private Button Update;
+        private Label label4;
+        private DataGridView HistoryData;
+        private Label label5;
     }
 }
