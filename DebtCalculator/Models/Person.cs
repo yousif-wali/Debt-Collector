@@ -13,9 +13,17 @@ namespace DebtCalculator.Models
         public string Phone { get; set; }
         public string Address { get; set; }
         public int Balance { get; set; }
-
-        public Person(string name, string phone, string address, int balance)
+        public Person() { }
+        public Person(string name, string address, int balance, string phone)
         {
+            Name = name;
+            Phone = phone;
+            Address = address;
+            Balance = balance;
+        }
+        public Person(int id, string name, string address, int balance, string phone)
+        {
+            Id = id;
             Name = name;
             Phone = phone;
             Address = address;

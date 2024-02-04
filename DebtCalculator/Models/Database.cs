@@ -32,6 +32,22 @@ namespace DebtCalculator.Models
                 return output.ToArray();
             }
         }
+        public static void DeleteData(Person person)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadManager()))
+            {
+                cnn.Execute("DELETE FROM Customer Where Name = @Name and Phone = @Phone and Address = @Address and Balance = @Balance limit 1;", person);
+            }
+        }
+        public static IEnumerable<Person> Search(string search)
+        {
+            using(IDbConnection cnn = new SQLiteConnection(LoadManager()))
+            {
+                var output = cnn.Query<Person>("SELECT * FROM Customer WHERE Name = @Search OR Phone = @Search OR Address = @Search OR Balance = @Search",
+                                new { Search = search });
+                return output;
+            }
+        }
         private static string LoadManager(string Id = "Default")
         {
             return ConfigurationManager.ConnectionStrings[Id].ConnectionString;
