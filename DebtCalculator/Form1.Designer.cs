@@ -36,7 +36,6 @@
             label2 = new Label();
             label3 = new Label();
             InputPhone = new TextBox();
-            InputAddress = new TextBox();
             InputBalance = new TextBox();
             Delete = new Button();
             InputSearch = new TextBox();
@@ -46,6 +45,7 @@
             label4 = new Label();
             HistoryData = new DataGridView();
             label5 = new Label();
+            InputDate = new DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)Data).BeginInit();
             ((System.ComponentModel.ISupportInitialize)HistoryData).BeginInit();
             SuspendLayout();
@@ -102,11 +102,11 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(811, 145);
+            label2.Location = new Point(831, 145);
             label2.Name = "label2";
-            label2.Size = new Size(55, 15);
+            label2.Size = new Size(35, 15);
             label2.TabIndex = 5;
-            label2.Text = "ناوونیشان";
+            label2.Text = "بەروار";
             // 
             // label3
             // 
@@ -123,13 +123,6 @@
             InputPhone.Name = "InputPhone";
             InputPhone.Size = new Size(189, 23);
             InputPhone.TabIndex = 7;
-            // 
-            // InputAddress
-            // 
-            InputAddress.Location = new Point(588, 142);
-            InputAddress.Name = "InputAddress";
-            InputAddress.Size = new Size(189, 23);
-            InputAddress.TabIndex = 8;
             // 
             // InputBalance
             // 
@@ -216,11 +209,20 @@
             label5.TabIndex = 17;
             label5.Text = "مێژوو";
             // 
+            // InputDate
+            // 
+            InputDate.Location = new Point(588, 139);
+            InputDate.Name = "InputDate";
+            InputDate.Size = new Size(189, 23);
+            InputDate.TabIndex = 18;
+            InputDate.ValueChanged += InputDate_ValueChanged;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(878, 477);
+            Controls.Add(InputDate);
             Controls.Add(label5);
             Controls.Add(HistoryData);
             Controls.Add(label4);
@@ -230,7 +232,6 @@
             Controls.Add(InputSearch);
             Controls.Add(Delete);
             Controls.Add(InputBalance);
-            Controls.Add(InputAddress);
             Controls.Add(InputPhone);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -259,7 +260,6 @@
         private Label label2;
         private Label label3;
         private TextBox InputPhone;
-        private TextBox InputAddress;
         private TextBox InputBalance;
         private Button Delete;
         private TextBox InputSearch;
@@ -269,5 +269,6 @@
         private Label label4;
         private DataGridView HistoryData;
         private Label label5;
+        private DateTimePicker InputDate;
     }
 }

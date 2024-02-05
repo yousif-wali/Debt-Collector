@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Yousif\\Desktop\\Xamarin\\DebtCalculator\\DebtCalculator\\DebtCalculator.csproj": {}
+    "C:\\Users\\Yousif\\Desktop\\Xamarin\\Debt-Collector\\DebtCalculator\\DebtCalculator.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Yousif\\Desktop\\Xamarin\\DebtCalculator\\DebtCalculator\\DebtCalculator.csproj": {
+    "C:\\Users\\Yousif\\Desktop\\Xamarin\\Debt-Collector\\DebtCalculator\\DebtCalculator.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Yousif\\Desktop\\Xamarin\\DebtCalculator\\DebtCalculator\\DebtCalculator.csproj",
+        "projectUniqueName": "C:\\Users\\Yousif\\Desktop\\Xamarin\\Debt-Collector\\DebtCalculator\\DebtCalculator.csproj",
         "projectName": "DebtCalculator",
-        "projectPath": "C:\\Users\\Yousif\\Desktop\\Xamarin\\DebtCalculator\\DebtCalculator\\DebtCalculator.csproj",
+        "projectPath": "C:\\Users\\Yousif\\Desktop\\Xamarin\\Debt-Collector\\DebtCalculator\\DebtCalculator.csproj",
         "packagesPath": "C:\\Users\\Yousif\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Yousif\\Desktop\\Xamarin\\DebtCalculator\\DebtCalculator\\obj\\",
+        "outputPath": "C:\\Users\\Yousif\\Desktop\\Xamarin\\Debt-Collector\\DebtCalculator\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Yousif\\AppData\\Roaming\\NuGet\\NuGet.Config",

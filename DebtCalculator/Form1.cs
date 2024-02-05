@@ -6,9 +6,11 @@ namespace DebtCalculator
     public partial class Form1 : Form
     {
         private int ChosenId { get; set; }
+        private string ChosenDate { get; set; }
         public Form1()
         {
             InitializeComponent();
+            ChosenDate = DateTime.Now.ToString("dd-MM-yyyy");
         }
         private void RefreshData()
         {
@@ -24,7 +26,7 @@ namespace DebtCalculator
 
         private void Insert_Click(object sender, EventArgs e)
         {
-            var person = new Person(InputName.Text, InputAddress.Text, Convert.ToInt32(InputBalance.Text), InputPhone.Text);
+            var person = new Person(InputName.Text,ChosenDate, Convert.ToInt32(InputBalance.Text), InputPhone.Text);
             Database.InsertData(person);
             RefreshData();
         }
@@ -43,8 +45,7 @@ namespace DebtCalculator
                 {
                     Data.CurrentRow.Selected = true;
                     ChosenId = Convert.ToInt32(Data.Rows[e.RowIndex].Cells["Id"].FormattedValue);
-                    InputName.Text = Data.Rows[e.RowIndex].Cells["Name"].FormattedValue.ToString();
-                    InputAddress.Text = Data.Rows[e.RowIndex].Cells["Address"].FormattedValue.ToString();
+                    InputName.Text = Data.Rows[e.RowIndex].Cells["Name"].FormattedValue.ToString();                   
                     InputPhone.Text = Data.Rows[e.RowIndex].Cells["Phone"].FormattedValue.ToString();
                     InputBalance.Text = Data.Rows[e.RowIndex].Cells["Balance"].FormattedValue.ToString();
                     var History = Database.GetHistories(InputName.Text);
@@ -64,6 +65,8 @@ namespace DebtCalculator
             {
                 var person = Database.Search(search);
                 Data.DataSource = person;
+                var History = Database.GetHistories(search);
+                HistoryData.DataSource = History;
             }
         }
 
@@ -71,7 +74,6 @@ namespace DebtCalculator
         {
             InputSearch.Clear();
             InputName.Clear();
-            InputAddress.Clear();
             InputPhone.Clear();
             InputBalance.Clear();
             RefreshData();
@@ -79,8 +81,19 @@ namespace DebtCalculator
 
         private void Update_Click(object sender, EventArgs e)
         {
-            Database.Update(ChosenId, InputName.Text, InputPhone.Text, InputAddress.Text, Convert.ToInt32(InputBalance.Text));
+            Database.Update(ChosenId, InputName.Text, InputPhone.Text, ChosenDate, Convert.ToInt32(InputBalance.Text));
             RefreshData();
+        }
+
+        private void InputDate_ValueChanged(object sender, EventArgs e)
+        {
+            
+             // Get the selected date as a string with default format
+                string selectedDateAsString = InputDate.Value.ToString();             
+                // To format the date, for example as "Year-Month-Day"
+                string formattedDate = InputDate.Value.ToString("dd-MM-yyyy");
+                ChosenDate = formattedDate;
+                 
         }
     }
 }
